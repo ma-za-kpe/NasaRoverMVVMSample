@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NasaRoverMVVMSample</string>
+    <string name="text_no_connectivity">No Internet Connection</string>
+    <string name="text_connectivity">Back Online</string>
+    <string name="title_activity_delete">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
