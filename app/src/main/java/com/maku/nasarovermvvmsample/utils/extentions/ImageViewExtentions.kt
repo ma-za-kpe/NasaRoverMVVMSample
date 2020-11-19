@@ -117,7 +117,7 @@ fun ImageView.zoomImageFromThumb(zoomedImg: View,
             interpolator = DecelerateInterpolator()
             addListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
-                    for (index in 0 until (zoomToContainer as ViewGroup).childCount) {
+                    for (index in 0 until zoomToContainer.childCount) {
                         val nextChild = zoomToContainer.getChildAt(index)
                         nextChild.alpha = 1f
                     }
@@ -129,7 +129,7 @@ fun ImageView.zoomImageFromThumb(zoomedImg: View,
                 }
 
                 override fun onAnimationCancel(animation: Animator) {
-                    for (index in 0 until (zoomToContainer as ViewGroup).childCount) {
+                    for (index in 0 until zoomToContainer.childCount) {
                         val nextChild = zoomToContainer.getChildAt(index)
                         nextChild.alpha = 1f
                     }

@@ -26,7 +26,7 @@ class NasaGlideAppModule: AppGlideModule() {
         builder.apply {
             setMemoryCache(LruResourceCache(memoryCacheSizeBytes.toLong()))
             setDiskCache(InternalCacheDiskCacheFactory(context, memoryCacheSizeBytes.toLong()))
-            setDefaultRequestOptions(requestOptions(context))
+            setDefaultRequestOptions(requestOptions())
         }
     }
 
@@ -37,7 +37,7 @@ class NasaGlideAppModule: AppGlideModule() {
         glide.registry.replace(GlideUrl::class.java, InputStream::class.java, factory)
     }
 
-    private fun requestOptions(context: Context): RequestOptions {
+    private fun requestOptions(): RequestOptions {
         return RequestOptions().signature(ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)))
             .encodeFormat(Bitmap.CompressFormat.PNG).encodeQuality(100)
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE).format(DecodeFormat.PREFER_RGB_565)

@@ -3,19 +3,17 @@ package com.maku.nasarovermvvmsample.data.repo
 import androidx.lifecycle.LiveData
 import com.maku.nasarovermvvmsample.data.local.db.dao.NasaRoverDao
 import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
-import com.maku.nasarovermvvmsample.data.remote.RemotePhotoDataSource
-import com.maku.nasarovermvvmsample.data.remote.RemotePhotoDataSourceImpl
+import com.maku.nasarovermvvmsample.data.remote.datasource.RemotePhotoDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class TestRepo (private val remotePhotoDataSource: RemotePhotoDataSourceImpl,
-                private val nasaRoverDao: NasaRoverDao
-) {
-
+class NasaRepoImpl(private val remotePhotoDataSource: RemotePhotoDataSource,
+                   private val nasaRoverDao: NasaRoverDao
+) : NasaRepo {
     companion object {
-        private val TAG = NasaRepository::class.java.name
+        private val TAG = NasaRepo::class.java.name
         const val GENERAL_ERROR_CODE = 499
     }
 
@@ -34,7 +32,7 @@ class TestRepo (private val remotePhotoDataSource: RemotePhotoDataSourceImpl,
         }
     }
 
-    suspend fun getNasaRoverData(): LiveData<NasaRover> {
+    override suspend fun getNasaData(): LiveData<NasaRover> {
         initRoverData()
         //withcontext returns something
         return withContext(Dispatchers.IO) {
@@ -49,7 +47,7 @@ class TestRepo (private val remotePhotoDataSource: RemotePhotoDataSourceImpl,
 
     //
     private suspend fun fetchPhoto() {
-        remotePhotoDataSource.fetchNasaPhotos(1000, "cgpkFxlyFjej8Zf6JXfDbNi8vafuDha6vxd0JJhk", 1)
+        remotePhotoDataSource.fetchNasaPhotos()
     }
 
 }

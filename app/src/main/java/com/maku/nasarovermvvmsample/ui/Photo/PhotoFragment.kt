@@ -10,23 +10,29 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.maku.nasarovermvvmsample.R
+import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
 import com.maku.nasarovermvvmsample.data.model.Photo
-import com.maku.nasarovermvvmsample.data.remote.NasaService
-import com.maku.nasarovermvvmsample.data.remote.RetrofitService
 import com.maku.nasarovermvvmsample.databinding.PhotoFragmentBinding
 import com.maku.nasarovermvvmsample.ui.MainViewModelFactory
-import com.maku.nasarovermvvmsample.utils.sealed.ResponseState
 import com.maku.nasarovermvvmsample.utils.couroutinescope.ScopedFragment
 import com.maku.nasarovermvvmsample.utils.list.InfiniteScrollListener
+import com.maku.nasarovermvvmsample.utils.sealed.NetworkState
 import kotlinx.coroutines.launch
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.closestKodein
+import org.kodein.di.generic.instance
 import timber.log.Timber
+import java.io.IOException
 
-class PhotoFragment : ScopedFragment() {
+class PhotoFragment : ScopedFragment(), KodeinAware {
 
     companion object {
         fun newInstance() = PhotoFragment()
     }
 
+    override val kodein by closestKodein()
+
+    private val viewModelFactory: MainViewModelFactory by instance<MainViewModelFactory>()
     private var viewModel: PhotoViewModel? = null
     private lateinit var binding: PhotoFragmentBinding
 
@@ -57,25 +63,46 @@ class PhotoFragment : ScopedFragment() {
     }
 
     private fun initObservers() = launch {
-        viewModel?.nasaPhotos()?.observe(viewLifecycleOwner, Observer { result ->
-            when (result) {
-                is ResponseState.Success -> {
-                    Timber.d("result: " + result)
-                    renderList(result.data)
-                    binding.homePhotosProgressContainer.visibility = View.GONE
-                    binding.homePhotosList.visibility = View.VISIBLE
-                }
-                is ResponseState.InProgress -> {
-                    binding.homePhotosProgressContainer.visibility = View.VISIBLE
-                    binding.homePhotosList.visibility = View.GONE
-                }
-                is ResponseState.Error -> {
-                    binding.homePhotosProgressContainer.visibility = View.GONE
-                    Toast.makeText(activity, result.exception.message, Toast.LENGTH_LONG).show()
-                }
-            }
+
+        val todayWeather = viewModel?.nasa?.await()
+        todayWeather?.observe(viewLifecycleOwner, Observer {
+            if (it == null) return@Observer //return from observer becauce the db could be empty
+            Timber.d("nasa today %s", it.toString())
+            fetchNasaData(it)
+//            when (arrayList as ArrayList<Photo>) {
+//                is ResponseState.Success<*> -> {
+//                    Timber.d("result: " + arrayList)
+//                    renderList(arrayList)
+//                    binding.homePhotosProgressContainer.visibility = View.GONE
+//                    binding.homePhotosList.visibility = View.VISIBLE
+//                }
+//                is ResponseState.InProgress -> {
+//                    binding.homePhotosProgressContainer.visibility = View.VISIBLE
+//                    binding.homePhotosList.visibility = View.GONE
+//                }
+//                is ResponseState.Error -> {
+//                    binding.homePhotosProgressContainer.visibility = View.GONE
+//                    Toast.makeText(activity, result.exception.message, Toast.LENGTH_LONG).show()
+//                }
+//            }
         })
     }
+
+    private fun fetchNasaData(arrayList: NasaRover) : NetworkState {
+            return try {
+                if (arrayList != null) {
+                    Timber.d("nasa not nulllllllllll %s", arrayList)
+                    val photos = arrayList.photos
+                    renderList(photos as ArrayList<Photo>)
+                    NetworkState.Success(arrayList)
+                } else {
+                    NetworkState.InvalidData
+                }
+
+            } catch (error : IOException) {
+                NetworkState.NetworkException(error.message!!)
+            }
+        }
 
     private fun renderList(data: ArrayList<Photo>) {
         if (data.isNotEmpty()) {
@@ -122,11 +149,8 @@ class PhotoFragment : ScopedFragment() {
 
     private fun initViewModels()= launch {
         if (null == viewModel) {
-            viewModel = ViewModelProvider(requireActivity(),
-                MainViewModelFactory(RetrofitService.createService(NasaService::class.java))
-            ).get(
-                PhotoViewModel::class.java)
-            viewModel!!.nasaPhotos()
+            //presavation of viewmodels is a job of the viewmodelprovider
+            viewModel = ViewModelProvider(requireActivity(), viewModelFactory).get(PhotoViewModel::class.java)
         }
     }
 

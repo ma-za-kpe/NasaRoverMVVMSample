@@ -1,4 +1,4 @@
-package com.maku.nasarovermvvmsample.data.local.db
+package com.maku.nasarovermvvmsample.data.local
 
 import android.content.Context
 import androidx.room.Database
@@ -10,7 +10,6 @@ import com.maku.nasarovermvvmsample.data.local.db.convertos.CameraConverters
 import com.maku.nasarovermvvmsample.data.local.db.convertos.LIstConvertor
 import com.maku.nasarovermvvmsample.data.local.db.convertos.RoverConverters
 import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
-import com.maku.nasarovermvvmsample.data.model.Photo
 
 @Database(
     entities = [NasaRover::class],
