@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maku.nasarovermvvmsample.R
 import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
 import com.maku.nasarovermvvmsample.data.model.Photo
+import com.maku.nasarovermvvmsample.data.remote.internet.ConnectivityInterceptor
 import com.maku.nasarovermvvmsample.databinding.PhotoFragmentBinding
 import com.maku.nasarovermvvmsample.ui.viewmodel.MainViewModelFactory
 import com.maku.nasarovermvvmsample.utils.couroutinescope.ScopedFragment
@@ -49,6 +50,8 @@ class PhotoFragment : ScopedFragment(), KodeinAware {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        //check internet availability before doin any of this...
+
         initUiBindings()
         initViewModels()
         initObservers()
@@ -65,10 +68,13 @@ class PhotoFragment : ScopedFragment(), KodeinAware {
     private fun initObservers() = launch {
 
         val todayWeather = viewModel?.nasa?.await()
-        todayWeather?.observe(viewLifecycleOwner, Observer {
-            if (it == null) return@Observer //return from observer becauce the db could be empty
-            Timber.d("nasa today %s", it.toString())
-            fetchNasaData(it)
+        todayWeather?.observe(viewLifecycleOwner, Observer { result ->
+            if (result == null){
+                Timber.d("data is null AF")
+                return@Observer
+            } //return from observer becauce the db could be empty
+            Timber.d("nasa today %s", result.toString())
+            fetchNasaData(result)
 //            when (arrayList as ArrayList<Photo>) {
 //                is ResponseState.Success<*> -> {
 //                    Timber.d("result: " + arrayList)
