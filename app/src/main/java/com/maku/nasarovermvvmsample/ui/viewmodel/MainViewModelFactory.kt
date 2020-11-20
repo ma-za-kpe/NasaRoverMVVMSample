@@ -1,4 +1,4 @@
-package com.maku.nasarovermvvmsample.ui
+package com.maku.nasarovermvvmsample.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

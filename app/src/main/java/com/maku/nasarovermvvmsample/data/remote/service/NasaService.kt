@@ -3,6 +3,7 @@ package com.maku.nasarovermvvmsample.data.remote.service
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.maku.nasarovermvvmsample.BuildConfig
 import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
+import com.maku.nasarovermvvmsample.data.remote.internet.ConnectivityInterceptor
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -23,9 +24,12 @@ interface NasaService {
 
     companion object{
         operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
         ): NasaService {
 
-            val okHttpClient = OkHttpClient.Builder()
+            val okHttpClient = OkHttpClient
+                .Builder()
+                .addInterceptor(connectivityInterceptor)
                 .build()
 
             return Retrofit.Builder()

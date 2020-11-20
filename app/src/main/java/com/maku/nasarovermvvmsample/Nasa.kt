@@ -5,9 +5,11 @@ import com.maku.nasarovermvvmsample.data.local.NasaLocalDB
 import com.maku.nasarovermvvmsample.data.remote.service.NasaService
 import com.maku.nasarovermvvmsample.data.remote.datasource.RemotePhotoDataSource
 import com.maku.nasarovermvvmsample.data.remote.datasource.RemotePhotoDataSourceImpl
+import com.maku.nasarovermvvmsample.data.remote.internet.ConnectivityInterceptor
+import com.maku.nasarovermvvmsample.data.remote.internet.ConnectivityInterceptorImpl
 import com.maku.nasarovermvvmsample.data.repo.NasaRepo
 import com.maku.nasarovermvvmsample.data.repo.NasaRepoImpl
-import com.maku.nasarovermvvmsample.ui.MainViewModelFactory
+import com.maku.nasarovermvvmsample.ui.viewmodel.MainViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -30,8 +32,9 @@ class Nasa : Application(), KodeinAware {
         bind() from singleton { NasaLocalDB(instance()) }
         bind() from singleton { instance<NasaLocalDB>().nasaRoverDao()}
 
-        bind() from singleton { NasaService() }
+        bind() from singleton { NasaService(instance()) }
         bind<RemotePhotoDataSource>() with singleton { RemotePhotoDataSourceImpl(instance()) }
+        bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
 
         bind<NasaRepo>() with singleton { NasaRepoImpl(instance(), instance()) }
 
