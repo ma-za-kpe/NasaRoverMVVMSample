@@ -12,10 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maku.nasarovermvvmsample.R
 import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
 import com.maku.nasarovermvvmsample.data.model.Photo
-import com.maku.nasarovermvvmsample.data.remote.internet.ConnectivityInterceptor
 import com.maku.nasarovermvvmsample.databinding.PhotoFragmentBinding
 import com.maku.nasarovermvvmsample.ui.viewmodel.MainViewModelFactory
-import com.maku.nasarovermvvmsample.utils.couroutinescope.ScopedFragment
+import com.maku.nasarovermvvmsample.utils.localcouroutinescope.ScopedFragment
 import com.maku.nasarovermvvmsample.utils.list.InfiniteScrollListener
 import com.maku.nasarovermvvmsample.utils.sealed.NetworkState
 import kotlinx.coroutines.launch

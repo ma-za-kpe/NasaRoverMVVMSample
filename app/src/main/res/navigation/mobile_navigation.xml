@@ -9,5 +9,14 @@
         android:id="@+id/photoFragment"
         tools:layout="@layout/photo_fragment"
         android:name="com.maku.nasarovermvvmsample.ui.Photo.PhotoFragment"
-        android:label="Nasa Rover Photo's" />
+        android:label="Nasa Rover Photo's" >
+        <action
+            android:id="@+id/action_photoFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailFragment"
+        android:name="com.maku.nasarovermvvmsample.ui.Photo.Photodetail.PhotoDetailFragment"
+        android:label="fragment_photo_detail"
+        tools:layout="@layout/fragment_photo_detail" />
 </navigation>

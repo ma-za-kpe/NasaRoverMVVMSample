@@ -1,13 +1,17 @@
 package com.maku.nasarovermvvmsample.data.remote.datasource
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.afollestad.materialdialogs.MaterialDialog
+import com.maku.nasarovermvvmsample.R
 import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
 import com.maku.nasarovermvvmsample.data.remote.service.NasaService
 import timber.log.Timber
 import java.io.IOException
 
 class RemotePhotoDataSourceImpl(val apiService: NasaService) : RemotePhotoDataSource {
+
     private val _downloadedfetchNasaPhotos = MutableLiveData<NasaRover>() // can be changed
     override val downloadedfetchNasaPhotos: LiveData<NasaRover>
         get() = _downloadedfetchNasaPhotos
@@ -21,7 +25,12 @@ class RemotePhotoDataSourceImpl(val apiService: NasaService) : RemotePhotoDataSo
             _downloadedfetchNasaPhotos.postValue(fetchedphotoData)
             Timber.d("data %s", fetchedphotoData)
         } catch (exception: IOException){
-            Timber.d("exception %s", exception)
+            Timber.d("exception %s", exception.message)
+//            val dialog = MaterialDialog(appContext)
+//                .title(R.string.your_title)
+//                .message(R.string.your_message)
+//
+//            dialog.show()
         }
     }
 

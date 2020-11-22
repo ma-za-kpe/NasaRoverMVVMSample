@@ -65,6 +65,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/rover"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:outlineAmbientShadowColor="@color/white"

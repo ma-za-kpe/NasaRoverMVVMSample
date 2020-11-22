@@ -2,12 +2,12 @@ package com.maku.nasarovermvvmsample.ui.Photo
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.maku.nasarovermvvmsample.data.model.Photo
 import com.maku.nasarovermvvmsample.databinding.RowPhotosBinding
 import com.maku.nasarovermvvmsample.utils.extentions.setImageFromUrlWithProgressBar
 import timber.log.Timber
-import java.net.URL
 
 
 class PhotosAdapter(private val photosList: ArrayList<Photo>) :
@@ -34,11 +34,21 @@ class PhotosAdapter(private val photosList: ArrayList<Photo>) :
             binding.photoBinding = photo
             binding.executePendingBindings()
             binding.rowPhotoRoverImg.setImageFromUrlWithProgressBar(
-                photo.imgSrc,
-                binding.rowPhotoRoverProgress
+                    photo.imgSrc,
+                    binding.rowPhotoRoverProgress
             )
-            binding.rowPhotoRoverImg.setOnClickListener { view ->
+            binding.rover.setOnClickListener { view ->
                 Timber.d("photo has been clicked")
+
+                //pass the 'context' here
+                val alertDialog = AlertDialog.Builder(view.context)
+                alertDialog.setTitle("Rover Name: "+ photo.rover.name)
+                alertDialog.setMessage("status: "+ photo.rover.status + "\n" + "Launch date: "+ photo.rover.launchDate + "\n" + "Landing date: "+ photo.rover.landingDate)
+                alertDialog.setPositiveButton("Close") { dialog, which -> dialog.cancel() }
+
+                val dialog = alertDialog.create()
+                dialog.show()
+
             }
         }
     }
