@@ -5,8 +5,7 @@
  A simple project showcasing the usage of MVVM architecture, together with kodein for Dependency injection, to create android application that fetches data from the Nasa Rover Api.
 
  - [Playstore](https://play.google.com/store/apps/details?id=com.maku.easydata) - Coming Soon.
- - # BASE URL [Nasa Rover Api](https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=<REPLACE_WITH_YOUR_API_KEY>)
-)
+ - BASE URL [Nasa Rover Api](https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=<REPLACE_WITH_YOUR_API_KEY>)
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
