@@ -16,37 +16,6 @@
 
     </style>
 
-    <style name="AppTheme.SplashLoad" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:textColor">@color/purple_700</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="AppTheme.Toolbar" parent="ThemeOverlay.MaterialComponents.Toolbar.Primary">
-        <item name="colorOnPrimary">@android:color/white</item>
-    </style>
-
-    <style name="AppTheme.Home.Row.Text" parent="AppTheme">
-        <item name="android:textSize">16sp</item>
-        <item name="android:gravity">top</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-
-    <style name="AppTheme.PhotoDetails" parent="AppTheme">
-        <item name="android:textSize">16sp</item>
-        <item name="android:gravity">center_horizontal</item>
-    </style>
-
-    <style name="AppTheme.PhotoDetails.Title" parent="AppTheme.PhotoDetails">
-        <item name="android:textSize">24sp</item>
-    </style>
-
-    <style name="AppTheme.PhotoDetails.Label" parent="AppTheme.PhotoDetails">
-        <item name="android:textStyle">bold</item>
-    </style>
-
     <style name="StatusTextView">
         <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@android:color/white</item>

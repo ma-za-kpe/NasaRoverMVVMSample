@@ -1,10 +1,7 @@
 package com.maku.nasarovermvvmsample.data.remote.datasource
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.afollestad.materialdialogs.MaterialDialog
-import com.maku.nasarovermvvmsample.R
 import com.maku.nasarovermvvmsample.data.local.db.entities.NasaRover
 import com.maku.nasarovermvvmsample.data.remote.service.NasaService
 import timber.log.Timber

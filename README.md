@@ -2,7 +2,7 @@
 ![](media/nasa.png)
 
 ## About
- A simple project showcasing the usage of MVVM architecture, together with kodein for Dependency injection, to create android application that fetches data from the Nasa Rover Api.
+ A simple project showcasing the usage of MVVM architecture, together with kodein for Dependency injection, to create an android application that fetches data from the Nasa Rover Api.
 
  - [Playstore](https://play.google.com/store/apps/details?id=com.maku.easydata) - Coming Soon.
  - BASE URL [Nasa Rover Api](https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=<REPLACE_WITH_YOUR_API_KEY>)
@@ -24,5 +24,8 @@
 
 ## Contact
 If you need any help, you can connect with me at [MAZAKPE](makpalyy@gmail.com).
+
+## Credits
+This project was made possible by knowledge got from [Carlos Daniel](https://proandroiddev.com/implementing-an-android-app-with-jetpack-mvvm-ui-state-manage-and-some-other-interesting-stuff-e965b420f5a8)
 
 Visit:- [maku](https://www.linkedin.com/in/maku-mazakpe-700a3a165/)

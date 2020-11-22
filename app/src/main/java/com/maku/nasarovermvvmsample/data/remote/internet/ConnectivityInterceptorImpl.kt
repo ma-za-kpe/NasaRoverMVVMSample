@@ -1,7 +1,6 @@
 package com.maku.nasarovermvvmsample.data.remote.internet
 
 import android.content.Context
-import android.net.ConnectivityManager
 import com.maku.nasarovermvvmsample.internal.NoConnectivityException
 import com.maku.nasarovermvvmsample.utils.connectivity.NetworkUtils
 import okhttp3.Interceptor

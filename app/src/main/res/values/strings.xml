@@ -3,8 +3,5 @@
     <string name="text_no_connectivity">No Internet Connection, please connect …</string>
     <string name="text_connectivity">Back Online</string>
     <string name="title_activity_delete">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="your_title">No Internet</string>
-    <string name="your_message">Please connect to the internet…</string>
 
 </resources>

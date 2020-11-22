@@ -1,7 +1,6 @@
 package com.maku.nasarovermvvmsample.ui.Photo.Photodetail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +13,6 @@ class PhotoDetailFragment : ScopedFragment() {
 
     private lateinit var photo: Photo
     private var shortAnimationDuration: Int = 0
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        loadArguments()
-    }
 
     private fun loadArguments() {
         arguments?.getStringArrayList("photo")?.let {

@@ -14,8 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.TestActivity">
-        </activity>
         <activity
             android:name=".ui.Photo.NasaRoverPhotoActivity"
             android:label="@string/title_activity_delete"><intent-filter>
