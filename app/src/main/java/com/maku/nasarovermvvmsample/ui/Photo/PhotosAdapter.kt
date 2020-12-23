@@ -9,7 +9,6 @@ import com.maku.nasarovermvvmsample.databinding.RowPhotosBinding
 import com.maku.nasarovermvvmsample.utils.extentions.setImageFromUrlWithProgressBar
 import timber.log.Timber
 
-
 class PhotosAdapter(private val photosList: ArrayList<Photo>) :
     RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
 

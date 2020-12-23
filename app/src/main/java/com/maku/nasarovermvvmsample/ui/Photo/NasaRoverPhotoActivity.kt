@@ -11,9 +11,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.maku.nasarovermvvmsample.R
 import com.maku.nasarovermvvmsample.databinding.ActivityNasaRoverPhotoBinding
-import com.maku.nasarovermvvmsample.utils.connectivity.NetworkUtils
 import com.maku.nasarovermvvmsample.utils.view.hide
 import com.maku.nasarovermvvmsample.utils.view.show
+import com.maku.networkutil.util.NetworkUtil
 
 class NasaRoverPhotoActivity : AppCompatActivity() {
 
@@ -44,7 +44,7 @@ class NasaRoverPhotoActivity : AppCompatActivity() {
      * Observe network changes i.e. Internet Connectivity
      */
     private fun handleNetworkChanges() {
-        NetworkUtils.getNetworkLiveData(applicationContext).observe(this, { isConnected ->
+        NetworkUtil.getNetworkLiveData(applicationContext).observe(this, { isConnected ->
             if (!isConnected) {
 
                 mViewBinding.textViewNetworkStatus.text = getString(R.string.text_no_connectivity)

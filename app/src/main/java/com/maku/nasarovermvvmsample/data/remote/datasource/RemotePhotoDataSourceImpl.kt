@@ -23,11 +23,6 @@ class RemotePhotoDataSourceImpl(val apiService: NasaService) : RemotePhotoDataSo
             Timber.d("data %s", fetchedphotoData)
         } catch (exception: IOException){
             Timber.d("exception %s", exception.message)
-//            val dialog = MaterialDialog(appContext)
-//                .title(R.string.your_title)
-//                .message(R.string.your_message)
-//
-//            dialog.show()
         }
     }
 

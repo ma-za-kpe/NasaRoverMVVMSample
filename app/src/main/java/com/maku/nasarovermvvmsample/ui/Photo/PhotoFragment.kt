@@ -32,7 +32,7 @@ class PhotoFragment : ScopedFragment(), KodeinAware {
 
     override val kodein by closestKodein()
 
-    private val viewModelFactory: MainViewModelFactory by instance<MainViewModelFactory>()
+    private val viewModelFactory: MainViewModelFactory by instance()
     private var viewModel: PhotoViewModel? = null
     private lateinit var binding: PhotoFragmentBinding
 

@@ -4,7 +4,6 @@ plugins {
     id 'kotlin-android-extensions'
     id "kotlin-kapt"
     id 'androidx.navigation.safeargs'
-
 }
 
 android {
@@ -99,6 +98,9 @@ dependencies {
 
     // Circular image
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+
+    //my metwork lib
+    implementation 'com.github.ma-za-kpe:LiveDataNetworkUtil:0.1.1'
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
