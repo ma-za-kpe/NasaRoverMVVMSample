@@ -19,10 +19,10 @@ class RemotePhotoDataSourceImpl(val apiService: NasaService) : RemotePhotoDataSo
             val fetchedphotoData = apiService
                 .getPhotos(1000, "cgpkFxlyFjej8Zf6JXfDbNi8vafuDha6vxd0JJhk", 1)
                 ?.await()
-            _downloadedfetchNasaPhotos.postValue(fetchedphotoData)
+            _downloadedfetchNasaPhotos.postValue(fetchedphotoData!!)
             Timber.d("data %s", fetchedphotoData)
         } catch (exception: IOException){
-            Timber.d("exception %s", exception.message)
+            Timber.d("exception popo %s", exception.toString())
         }
     }
 

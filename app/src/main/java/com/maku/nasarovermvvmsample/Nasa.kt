@@ -32,9 +32,9 @@ class Nasa : Application(), KodeinAware {
         bind() from singleton { NasaLocalDB(instance()) }
         bind() from singleton { instance<NasaLocalDB>().nasaRoverDao()}
 
-        bind() from singleton { NasaService(instance()) }
+        bind() from singleton { NasaService() }
         bind<RemotePhotoDataSource>() with singleton { RemotePhotoDataSourceImpl(instance()) }
-        bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
+//        bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
 
         bind<NasaRepo>() with singleton { NasaRepoImpl(instance(), instance()) }
 

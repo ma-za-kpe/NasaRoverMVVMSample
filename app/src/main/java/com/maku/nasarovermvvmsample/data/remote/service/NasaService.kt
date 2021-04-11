@@ -24,12 +24,12 @@ interface NasaService {
 
     companion object{
         operator fun invoke(
-            connectivityInterceptor: ConnectivityInterceptor
+//            connectivityInterceptor: ConnectivityInterceptor
         ): NasaService {
 
             val okHttpClient = OkHttpClient
                 .Builder()
-                .addInterceptor(connectivityInterceptor)
+//                .addInterceptor(connectivityInterceptor)
                 .build()
 
             return Retrofit.Builder()
