@@ -72,7 +72,7 @@ jobs:
           path: app/build/outputs/apk/debug/app-debug.apk
 
   deploy:
-    needs: [ unit_tests, android_tests ]
+    needs: [ build ]
     runs-on: ubuntu-latest
     steps:
       # 1
