@@ -20,6 +20,7 @@ class PhotosAdapter(private val photosList: ArrayList<Photo>) :
 
     override fun getItemCount() = photosList.size
 
+
     override fun onBindViewHolder(holder: PhotosViewHolder, position: Int) {
         holder.bind(photosList[position])
     }
