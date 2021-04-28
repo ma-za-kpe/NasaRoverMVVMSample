@@ -50,6 +50,7 @@ jobs:
           disable-animations: true
           script: ./gradlew connectedCheck
 
+
   generate-apk:
     name: Generate apk
     runs-on: ubuntu-latest
