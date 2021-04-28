@@ -15,7 +15,8 @@
 - [Room Persistance](https://developer.android.com/topic/libraries/architecture/room) - The Room persistence library provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
 - [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling
 - [Kotlin coroutines on Android](https://developer.android.com/kotlin/coroutines) - coroutines help to manage long-running tasks that might otherwise block the main thread and cause your app to become unresponsive.
-- []() -
+- [Github actions](https://github.com/features/actions) - Automate your workflow
+from idea to production
 
 ## How to use this project
 - Clone the project
