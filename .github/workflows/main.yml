@@ -34,5 +34,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
       - name: Unit tests
         run: ./gradlew testDebugUnitTest
