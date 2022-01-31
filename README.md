@@ -1,4 +1,4 @@
-# Nasa-Rover-MVVM-Sample
+# Nasa-Rover-MVVM-Sample (UNDERGOING RECONSTRUCTION USING CLEAN ARCHITECTURE)
 ![](media/nasa.png)
 
 ## About
